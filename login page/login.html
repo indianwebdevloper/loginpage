@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <h2>Login</h2>
+        <form id="loginForm">
+            <div>
+                <input type="text" id="username" placeholder="Username" required>
+            </div>
+            <div>
+                <input type="password" id="password" placeholder="Password" required>
+            </div>
+            <div>
+                <input type="submit" value="Login">
+            </div>
+        </form>
+        <div id="error" class="error"></div>
+    </div>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            // Get the input values
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            // Perform input validation (you can add more checks as needed)
+            if (username === "" || password === "") {
+                document.getElementById("error").textContent = "Please fill in all fields.";
+                return;
+            }
+
+            // Simulate password hashing (replace this with a secure backend)
+            const hashedPassword = hashPassword(password);
+
+            // Here, you can send the username and hashedPassword to your backend for authentication
+            // For now, we'll just display the results
+            console.log("Username:", username);
+            console.log("Hashed Password:", hashedPassword);
+        });
+
+        // Simple password hashing function (replace with a secure hashing library in a real application)
+        function hashPassword(password) {
+            // This is a basic example; do not use this in production!
+            return btoa(password);
+        }
+    </script>
+</body>
+</html>
